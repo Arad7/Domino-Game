@@ -1,74 +1,76 @@
 # Domino game
 
-##  Introduction 
-This is a human-versus-computer-player game of dominoes.
-A Domino has two sides and a number between 0 and 6 on each side. There are only
-one variation of each domino, and there are 28 dominos total.
-Each player starts the game with seven dominoes; the remaining 14 are in the
-boneyard (the deck).
-On each turn, the player downs a single domino, matching
-the configuration on the table, while a 0 or blank in the GUI version is used as
-a wild card. If the player has a domino, that can extend the line of play.
-in either direction, they put it down, and their turn ends.
-If the player does not have a domino able to extend the line of play,
-They must pick one up from the boneyard and continue to do so until
-Either a matching domino is found or the boneyard is empty.
-If the player has a domino able to extend the line of play, they cannot pick
-any pieces from the boneyard.
-If the boneyard is empty and the player cannot extend the line of play, they
-end their turn.
+## Introduction  
+This is a **human-versus-computer domino game**.  
+Each domino has two sides, with a number between **0 and 6** on each side. There is only one variation of each domino, resulting in a total of **28 dominoes**.  
 
-### Winning 
-The game ends when the boneyard is empty and either
-– The current player places their last domino.
-– Both players have taken a turn without placing a domino.
-• At the end of the game, the dots on each player’s dominos are counted and 
-the player with the lower total wins. (This means that is one player ends the 
-game without any dominos, they’re pretty much guaranteed to be the winner.)
-If both players have the same number of dots, the player who last played a 
-domino is the winner.
+At the start of the game:  
+- Each player is dealt **7 dominoes**.  
+- The remaining **14 dominoes** are placed in the **boneyard** (the deck).  
 
-The part "The current player places their last domino." means that there could
-be a scenario where humans have one card, there is one card in the boneyard, and
-a computer has 0 cards.
-In this scenario, if a human plays his card (and stays with 0), the game is not 
-over. because there is still one more card in the boneyard. Since the computer
-has no cards, it takes the cards from the boneyard. If the computer can play
-this card, he wins. as according to the rules: "If the player does not have a 
-domino able to extend the line of play. They must pick one up from the boneyard
-and continue to do so". 
-Because it is technically still a computer game, it wins.
+### Gameplay  
+- On their turn, a player places a domino that matches the configuration of the tiles on the table.  
+- **Blank tiles (0s)** act as wild cards.  
+- If the player has a valid move, they must play a domino to extend the line of play.  
+- If no valid move is possible:  
+  - The player draws from the boneyard until they find a matching domino or the boneyard is empty.  
+  - If the boneyard is empty and no move is possible, the player's turn ends.  
+- Players **cannot draw from the boneyard** if they already have a playable domino.
 
+## Winning the Game  
+The game ends when:  
+1. The **boneyard is empty**, and either:  
+   - A player places their last domino.  
+   - Both players take turns without placing a domino.  
 
-### GUI Specifics:
-To play a tile, the user needs to click on the tile. Then he can choose if
-The user wants to play the tile from the left or from the right through the
-buttons at the top.If nothing is pressed, it will play what the bottle is 
-currently on. If the move is not legal, nothing will happen. 
-If a user wants to flip the tile (switch the sides), he can do it in two ways :)
-Option one: click on the tile and click "flip sides." Option 2: double-click in
-the tile he wants to flip. Both options will reset the selected tile to null.
-If you can play a tile, you must do so. If you cannot, the user should press
-"draw". This will add a card to the user's hand. He will need to keep pressing.
-"draw" until he can play a card.
+### Scoring  
+- At the end of the game, the dots on each player’s remaining dominoes are counted.  
+- The player with the **lower total dots** wins.  
+- If a player has **no dominoes left**, they are guaranteed to win.  
+- In the case of a tie (same number of dots), the player who last placed a domino is declared the winner.  
 
-*If a player cannot play and the boneyard is empty, he will press 
-"cannotPlayOrDraw" bottom which will update the counter of turns without play
-and will keep the game going (or end it if it got to 2).
+### Special Scenario  
+If a human player has one domino left, the computer has none, and there’s one domino remaining in the boneyard:  
+- The human plays their last domino but does **not win** because the computer will draw the last domino from the boneyard.  
+- If the computer can play the domino it drew, it wins, as per the game rules.  
 
-* If you make the screen smaller, the tiles visuals get messy.
-* In the GUI version the console prints what the computer is doing, but I wanted
-keep it because it can help see what the computer did and I think it adds to 
-the game
+ ---
 
+## GUI Version  
+### How to Play  
+- **Placing a Tile**:  
+  - Click on a tile, then choose whether to play it on the **left** or **right** using buttons at the bottom (the above the player domino's).  
+  - If no button is selected, the move defaults to the side the bottom is currently on.  
+  - If the move is **illegal**, nothing happens.  
 
-### Console Game Specifics
-Instead of clicking, you press on the keyboard. If you can play, it will ask you
-what Domino you want to play, and you need to write the index (starting from 0).
-Then it will ask if you want to rotate the tile.
-If you press 'y', it will count as yes; anything else will be counted as no.
-It will then go right or left. If the user presses 'l', it will be counted as
-left; anything else will be counted as right. 
-If the move is not legal, it will tell you, and you do the process again. 
-If you cannot play a card, it will a card automatically for you, and will 
-keep drawing automatically until you can Play a card if the boneyard is empty.
+- **Flipping a Tile**:  
+  - Option 1: Click the tile, then click the "Flip Sides" button.  
+  - Option 2: Double-click the tile to flip it.  
+
+- **Drawing Tiles**:  
+  - If you cannot play, press **"Draw"** to add a domino to your hand. Continue pressing until you can play.  
+
+- **No Moves Available**:  
+  - If the boneyard is empty and no moves are possible, press **"Cannot Play or Draw"** to update the turn counter. If both players cannot play for 2 turns, the game ends.  
+
+### Notes:  
+- **Visuals**: Resizing the screen can cause tiles to display incorrectly.  
+- **Console Output**: The GUI version prints the computer’s moves in the console for clarity and adds to the overall experience.  
+
+---
+
+## Console Version  
+### How to Play  
+- **Placing a Tile**:  
+  - When prompted, type the **index** of the domino you want to play (starting from 0).  
+  - The program will then ask if you want to rotate the tile.  
+    - Press `y` for yes or any other key for no.  
+  - Finally, specify the placement direction:  
+    - Press `l` for left or any other key for right.  
+
+- **Illegal Moves**:  
+  - If the move is not valid, you’ll be notified and prompted to try again.  
+
+- **Drawing Tiles**:  
+  - If you cannot play, the program will automatically draw tiles for you until a valid move is possible.  
+  - If the boneyard is empty, your turn will end.  
