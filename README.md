@@ -1,4 +1,4 @@
-# Domino game
+# Domino Game
 
 ## Introduction  
 This is a **human-versus-computer domino game**.  
